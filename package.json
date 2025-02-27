@@ -1,6 +1,6 @@
 {
   "name": "bot-lunar",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "bot para whatsapp do projeto lunar",
   "main": "main.ts",
   "scripts": {

@@ -44,7 +44,6 @@ class Bot {
         }
     });
 
-
     // Mensagens recebidas
     sock.ev.on("messages.upsert", async ({ messages }) => {
         const msg = messages[0];
@@ -80,6 +79,8 @@ class Bot {
     
         // Verifica se a mensagem veio de um dos grupos autorizados
         if (msg.key.remoteJid && GROUPS.includes(msg.key.remoteJid) && msg.message) {
+            await new Promise((resolve) => setTimeout(resolve, 2000)); // Espera 2s antes de consultar metadata
+
             const groupMetadata = await sock.groupMetadata(msg.key.remoteJid);
             const groupName = groupMetadata.subject;
             const members = groupMetadata.participants;
