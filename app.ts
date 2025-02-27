@@ -41,6 +41,10 @@ class App {
     private routes() {
         this.app.use('/api/v1', route);
         this.app.use(route);
+
+        this.app.get('/healthcheck', (req: Request, res: Response) => {
+            res.status(200).send('Hello World!');
+        });
     }
 
     public listen() {
