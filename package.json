@@ -8,7 +8,7 @@
     "seed": "node ./prisma/seed.js",
     "db:reset": "prisma migrate reset --force",
     "db:migrate": "prisma migrate dev --name init",
-    "start": "npm run seed && ts-node main.ts",
+    "start": "npm run seed && node dist/main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
