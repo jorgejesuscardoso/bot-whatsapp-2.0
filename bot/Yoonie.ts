@@ -1,4 +1,4 @@
-import { makeWASocket, useMultiFileAuthState } from 'baileys';
+import { Browsers, makeWASocket, useMultiFileAuthState } from 'baileys';
 import qrcode from 'qrcode-terminal';
 import Comandos from './comandos/comand';
 import MarkAndResponse from './markAndResponse';
@@ -20,7 +20,7 @@ class Bot {
 
   async startBot() {
     const { state, saveCreds } = await useMultiFileAuthState("auth_yoonie");
-    const sock = makeWASocket({ auth: state });
+    const sock = makeWASocket({ auth: state, browser: Browsers.windows('Desktop') });
 
     sock.ev.on("creds.update", saveCreds);
 
