@@ -2,6 +2,7 @@ import { Browsers, makeWASocket, useMultiFileAuthState } from 'baileys';
 import qrcode from 'qrcode-terminal';
 import Comandos from './comandos/comand';
 import MarkAndResponse from './markAndResponse';
+import { getCachedGroupMetadata } from './metaData';
 
 class Bot {
     private comandos: Comandos;
@@ -75,13 +76,15 @@ class Bot {
         const admins = await getGroupAdmins(msg.key.remoteJid); // Pegamos os admins do grupo 
         const senderId = msg.key.participant || msg.key.remoteJid || ""; // Obtém o ID do remetente
 
-        let text = "";
+        let text = "";        
     
         // Verifica se a mensagem veio de um dos grupos autorizados
         if (msg.key.remoteJid && GROUPS.includes(msg.key.remoteJid) && msg.message) {
             await new Promise((resolve) => setTimeout(resolve, 2000)); // Espera 2s antes de consultar metadata
 
-            const groupMetadata = await sock.groupMetadata(msg.key.remoteJid);
+            const groupMetadata = await getCachedGroupMetadata(sock, msg.key.remoteJid);
+            if (!groupMetadata) return; // Sai da função se falhar
+
             const groupName = groupMetadata.subject;
             const members = groupMetadata.participants;
         
