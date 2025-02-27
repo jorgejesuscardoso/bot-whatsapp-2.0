@@ -4,6 +4,8 @@ import Comandos from './comandos/comand';
 import MarkAndResponse from './markAndResponse';
 import { getCachedGroupMetadata } from './metaData';
 
+
+
 class Bot {
     private comandos: Comandos;
     private markAndResponse: MarkAndResponse;
