@@ -4,6 +4,7 @@
   "description": "bot para whatsapp do projeto lunar",
   "main": "main.ts",
   "scripts": {
+    "build": "tsc",
     "seed": "node ./prisma/seed.js",
     "db:reset": "prisma migrate reset --force",
     "db:migrate": "prisma migrate dev --name init",
