@@ -3,6 +3,7 @@ import qrcode from 'qrcode-terminal';
 import Comandos from './comandos/comand';
 import MarkAndResponse from './markAndResponse';
 import { getCachedGroupMetadata } from './metaData';
+import axios from 'axios';
 
 
 
@@ -206,3 +207,12 @@ class Bot {
 }
 
 export default Bot;
+
+function keepAlive() {
+    axios.get("https://google.com")
+    .then(() => console.log("Ping enviado para manter o bot ativo."))
+    .catch((err) => console.error("Erro ao pingar:", err));
+}
+
+// Executa o ping a cada 5 minutos
+setInterval(keepAlive, 5 * 60 * 1000);

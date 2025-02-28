@@ -13,8 +13,8 @@ class ComandosController {
     async getMsgRomantics(req: Request, res: Response) {
         try {
             const key = req.query.key as string
-            key.toLocaleLowerCase()
-            const mensagens = await this.comandosModel.getMsgRomantics(key)
+            const lower = key.toLocaleLowerCase()
+            const mensagens = await this.comandosModel.getMsgRomantics(lower)
             return res.status(200).json(mensagens)
         } catch {
             throw new Error('Erro ao buscar mensagens românticas')

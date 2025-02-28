@@ -54,7 +54,7 @@ class MarkAndResponse {
                 const senderName = msg.pushName || "ADM";
         
                 // Verifica primeiro se a mensagem está no mapa de respostas românticas
-                if (senderId === anaNumber  && Array.isArray(loveResponseMap) && loveResponseMap.length > 0) {                    
+                if (senderId === anaNumber || senderId === jcNumber  && Array.isArray(loveResponseMap) && loveResponseMap.length > 0) {                    
     
                     const randomResponse = loveResponseMap[Math.floor(Math.random() * loveResponseMap.length)];                    
         

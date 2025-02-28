@@ -86,10 +86,10 @@ class Comandos {
 
     async getMin(sock: any, msg: any, text: string, senderId: string, anaNumber: string) {        
 
-        if (senderId !== anaNumber) {
-            await sock.sendMessage(msg.key.remoteJid, { text: "Você não é a minha Anna, vá embora! 😠🚫" });
-            return;
-        }
+        // if (senderId !== anaNumber) {
+        //     await sock.sendMessage(msg.key.remoteJid, { text: "Você não é a minha Anna, vá embora! 😠🚫" });
+        //     return;
+        // }
 
         const loveMessage = `💖 *Lista de Comandos Românticos* 💖\n\n` +
             `Digite uma dessas frases, meu amor, para receber uma resposta apaixonada:\n\n` +
@@ -107,10 +107,10 @@ class Comandos {
             `💌 *Você é meu tudo*\n` +
             `💌 *Me apaixonei por você*\n` +
             `💌 *Eu preciso de você*\n` +
-            `💌 *Você é a melhor parte de mim*\n\n\n` +
+            `💌 *Você é a melhor parte de mim*\n` +
+            `💌 *chamei sim*\n\n\n` +
             `💘 *Respondo com muito amor e carinho!* 💘`;
-
-        
+            
         await sock.sendMessage(msg.key.remoteJid, { text: loveMessage });
         return;
     }
